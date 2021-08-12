@@ -13,7 +13,7 @@ function _render(box, map) {
       const y = i + box.y;
       const x = j + box.x;
       if (box.shape[i][j] > 0) {
-        map[y][x] = 1
+        map[y][x] = box.shape[i][j]
       }      
     }
   }

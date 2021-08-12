@@ -37,24 +37,24 @@ const boxInfo = {
   },
   2: {
     shape: [
-      [0, 1, 0],
-      [1, 1, 0],
-      [1, 0, 0]
+      [0, 2, 0],
+      [2, 2, 0],
+      [2, 0, 0]
     ],
     rotatestrategy: [rotate, (m) => rotate(rotate(rotate(m)))]
   },
   3: {
     shape: [
-      [1, 1, 0],
-      [1, 0, 0],
-      [1, 0, 0]
+      [3, 3, 0],
+      [3, 0, 0],
+      [3, 0, 0]
     ],
     rotatestrategy: [rotate, rotate, rotate, rotate]
   },
   4: {
     shape: [
-      [1, 1, 1, 1],
       [0, 0, 0, 0],
+      [4, 4, 4, 4],
       [0, 0, 0, 0],
       [0, 0, 0, 0]
     ],
@@ -73,6 +73,6 @@ export function createBox() {
 function getRandomBoxInfo() {
   const max = Object.keys(boxInfo).length;
   const key = Math.floor(Math.random() * max) + 1;
-  // const key = 4;
+  // const key = 4 ;
   return boxInfo[key];
 }

@@ -19,14 +19,52 @@ export function getBoxBottomPoints(box) {
         points.push({
           x: j + box.x,
           y: i + box.y
-        })
+        });
+        break;
       }
     }
   }
-  return points
+  // console.log(points);
+  return points;
 }
 
-// 逆时针旋转
+export function getBoxRightPoints(box) {
+  const row = box.shape.length;
+  const col = box.shape[0].length;
+  let points = [];
+  for (let i = 0; i < row; i++) {
+    for (let j = col - 1; j >= 0; j--) {
+      if (box.shape[i][j] > 0) {
+        points.push({
+          x: j + box.x,
+          y: i + box.y
+        });
+        break;
+      }
+    }
+  }
+  return points;
+}
+
+export function getBoxLeftPoints(box) {
+  const row = box.shape.length;
+  const col = box.shape[0].length;
+  let points = [];
+  for (let i = 0; i < row; i++) {
+    for (let j = 0; j < col; j++) {
+      if (box.shape[i][j] > 0) {
+        points.push({
+          x: j + box.x,
+          y: i + box.y
+        });
+        break;
+      }
+    }
+  }
+  return points;
+}
+
+// 逆时针旋转  ———— 需要判断到边界是否可以再旋转
 export function rotate(matrix) {
   const row = matrix.length;
   const col = matrix[0].length;

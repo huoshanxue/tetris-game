@@ -20,9 +20,8 @@ export function addBoxToMap(box, map) {
       const x = box.x + j
       const y = box.y + i
       if (box.shape[i][j] > 0) {
-        map[y][x] = -1
+        map[y][x] = -box.shape[i][j]
       }
     }
   }
-
 }

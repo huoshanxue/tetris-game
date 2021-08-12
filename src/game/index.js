@@ -3,7 +3,7 @@ import { initMap, addBoxToMap } from './map';
 import { render } from "./renderer";
 import { addTicker } from "./ticker";
 import { intervalTimer } from "./utils";
-import { hitBottomBorder, hitBottomBox } from "./hit";
+import { hitBottomBorder, hitBottomBox, hitRightBorder, hitRightBox, hitLeftBorder, hitLeftBox } from "./hit";
 import { createBox } from './Box';
 import { eliminate } from "./eliminate";
 
@@ -25,10 +25,12 @@ export function startGame(map) {
       if (hitBottomBorder(activeBox) || hitBottomBox(activeBox, map)) {
 
         addBoxToMap(activeBox, map)
+        
         eliminate(map)
+
         activeBox = createBox()
 
-        console.log('触底了。。。')
+        console.log('hit bottom')
         return
       }
 
@@ -46,19 +48,27 @@ export function startGame(map) {
       case 'ArrowDown':
         if (hitBottomBorder(activeBox) || hitBottomBox(activeBox, map)) {
 
-          addBoxToMap(activeBox, map)
-          eliminate(map)
-          activeBox = createBox()
+          addBoxToMap(activeBox, map);
+          eliminate(map);
+          activeBox = createBox();
 
-          console.log('触底了。。。')
-          return
+          console.log('hit bottom');
+          return;
         }
         activeBox.y++;
         break;
       case 'ArrowRight':
+        if (hitRightBorder(activeBox) || hitRightBox(activeBox, map)) {
+          console.log('hit right');
+          return;
+        }
         activeBox.x++;
         break;
       case 'ArrowLeft':
+        if (hitLeftBorder(activeBox) || hitLeftBox(activeBox, map)) {
+          console.log('hit left');
+          return;
+        }
         activeBox.x--;
         break;
       case 'ArrowUp':

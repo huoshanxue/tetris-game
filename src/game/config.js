@@ -1,2 +1,2 @@
-export const gameRow = 10;
+export const gameRow = 15;
 export const gameCol = 10;
