@@ -11,14 +11,16 @@ const props = defineProps(['type'])
 
 const typeToColor = {
   '-1': 'lightcoral',
-  1: 'lightcoral',
-  0: '#aaa',
+  '1': 'lightcoral',
+  "0": '#aaa',
   '-2': 'limegreen',
-  2: 'limegreen',
+  '2': 'limegreen',
   '-3': 'lightsalmon',
-  3: 'lightsalmon',
+  '3': 'lightsalmon',
   '-4': 'lightseagreen',
-  4: 'lightseagreen',
+  '4': 'lightseagreen',
+  '-5': 'indianred',
+  '5': 'indianred',
 }
 
 const color = computed(() => {

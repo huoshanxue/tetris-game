@@ -1,4 +1,5 @@
 import { gameRow, gameCol } from './config';
+import { checkLegalPoints } from './map';
 
 export function render(box, map) {
   // 清除之前的逻辑
@@ -12,9 +13,11 @@ function _render(box, map) {
     for (let j = 0; j < col; j++) {
       const y = i + box.y;
       const x = j + box.x;
-      if (box.shape[i][j] > 0) {
-        map[y][x] = box.shape[i][j]
-      }      
+      if (checkLegalPoints({ offsetX: x, offsetY: y })) {
+        if (box.shape[i][j] > 0) {
+          map[y][x] = box.shape[i][j]
+        }
+      }
     }
   }
 }

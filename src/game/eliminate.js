@@ -6,7 +6,6 @@ export function eliminate(map) {
 
 function _eliminate(map, lines) {
   const mapCol = map[0].length;
-  console.log('-0-------------', lines)
   lines.reverse().forEach(idx => {
     map.splice(idx, 1);
     map.unshift(new Array(mapCol).fill(0))

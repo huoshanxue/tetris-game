@@ -6,6 +6,7 @@ import { intervalTimer } from "./utils";
 import { hitBottomBorder, hitBottomBox, hitRightBorder, hitRightBox, hitLeftBorder, hitLeftBox } from "./hit";
 import { createBox } from './Box';
 import { eliminate } from "./eliminate";
+import { checkLegalBox } from "./map";
 
 export function startGame(map) {
   initMap(map);
@@ -25,7 +26,7 @@ export function startGame(map) {
       if (hitBottomBorder(activeBox) || hitBottomBox(activeBox, map)) {
 
         addBoxToMap(activeBox, map)
-        
+
         eliminate(map)
 
         activeBox = createBox()
@@ -72,7 +73,9 @@ export function startGame(map) {
         activeBox.x--;
         break;
       case 'ArrowUp':
-        activeBox.rotate();
+        if (checkLegalBox(activeBox, map)) {
+          activeBox.rotate();
+        }
         break;
     }
   })

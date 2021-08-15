@@ -23,8 +23,9 @@ class Box {
   }
 
   setRotatestrategy(v) {
-    if (!v) return;
-    this._rotates = v;
+    if (v) {
+      this._rotates = v;
+    }
   }
 }
 
@@ -53,12 +54,20 @@ const boxInfo = {
   },
   4: {
     shape: [
-      [0, 0, 0, 0],
-      [4, 4, 4, 4],
-      [0, 0, 0, 0],
-      [0, 0, 0, 0]
+      [0, 4, 0, 0],
+      [0, 4, 0, 0],
+      [0, 4, 0, 0],
+      [0, 4, 0, 0]
     ],
     rotatestrategy: [rotate, (m) => rotate(rotate(rotate(m)))]
+  },
+  5: {
+    shape: [
+      [5, 5, 5],
+      [0, 5, 0],
+      [0, 0, 0],
+    ],
+    rotatestrategy: [rotate, rotate, rotate, rotate],
   }
 }
 
@@ -73,6 +82,6 @@ export function createBox() {
 function getRandomBoxInfo() {
   const max = Object.keys(boxInfo).length;
   const key = Math.floor(Math.random() * max) + 1;
-  // const key = 4 ;
+  // const key = 4;
   return boxInfo[key];
 }
