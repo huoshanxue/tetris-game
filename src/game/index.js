@@ -7,6 +7,7 @@ import { hitBottomBorder, hitBottomBox, hitRightBorder, hitRightBox, hitLeftBord
 import { createBox } from './Box';
 import { eliminate } from "./eliminate";
 import { checkLegalBox } from "./map";
+import { rotate } from './matrix'
 
 export function startGame(map) {
   initMap(map);
@@ -73,7 +74,12 @@ export function startGame(map) {
         activeBox.x--;
         break;
       case 'ArrowUp':
-        if (checkLegalBox(activeBox, map)) {
+        const rotateBox = {
+          x: activeBox.x,
+          y: activeBox.y,
+          shape: rotate(activeBox.shape)
+        }
+        if (checkLegalBox(rotateBox, map)) {
           activeBox.rotate();
         }
         break;

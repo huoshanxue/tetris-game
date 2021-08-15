@@ -47,7 +47,10 @@ export function checkLegalBox(box, map) {
       const x = box.x + j;
       const y = box.y + i;
       if (!checkLegalPoints({ offsetX: x, offsetY: y })) return false;
-      if (map[y][x] < 0) return false;
+      if (map[y][x] < 0) {
+        console.log(11111111)
+        return false;
+      }
     }
   }
   return true;
