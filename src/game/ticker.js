@@ -16,3 +16,11 @@ const tickers = [];
 export function addTicker(ticker) {
   tickers.push(ticker);
 }
+
+export function removeTicker(ticker) {
+  for (let i = 0; i < tickers.length; i++) {
+    if (ticker == tickers[i]) {
+      tickers.splice(i, 1);
+    }
+  }
+}

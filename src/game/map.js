@@ -20,7 +20,7 @@ export function addBoxToMap(box, map) {
       const x = box.x + j
       const y = box.y + i
       if (checkLegalPoints({ offsetX: x, offsetY: y })) {
-        if (box.shape[i][j] > 0) {
+        if (box.shape[i][j] > 0 && map[y][x] > 0) {
           map[y][x] = -box.shape[i][j]
         }
       }
@@ -33,7 +33,6 @@ export function addBoxToMap(box, map) {
 export function checkLegalPoints({ offsetX, offsetY }) {
   if (offsetX < 0 || offsetX >= gameCol) return false;
   if (offsetY < 0 || offsetY >= gameRow) {
-      console.log(11111111111)
     return false};
   return true;
 }
@@ -48,7 +47,6 @@ export function checkLegalBox(box, map) {
       const y = box.y + i;
       if (!checkLegalPoints({ offsetX: x, offsetY: y })) return false;
       if (map[y][x] < 0) {
-        console.log(11111111)
         return false;
       }
     }

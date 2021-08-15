@@ -1,7 +1,7 @@
 export * from './config';
 import { initMap, addBoxToMap } from './map';
 import { render } from "./renderer";
-import { addTicker } from "./ticker";
+import { addTicker, removeTicker } from "./ticker";
 import { intervalTimer } from "./utils";
 import { hitBottomBorder, hitBottomBox, hitRightBorder, hitRightBox, hitLeftBorder, hitLeftBox } from "./hit";
 import { createBox } from './Box';
@@ -30,6 +30,12 @@ export function startGame(map) {
 
         eliminate(map)
 
+        if (activeBox.y < 0 ) {
+          alert('game over')
+          removeTicker(handlerTicker)
+          return
+        }
+
         activeBox = createBox()
 
         console.log('hit bottom')
@@ -46,6 +52,7 @@ export function startGame(map) {
   addTicker(handlerTicker)
 
   document.addEventListener('keydown', (e) => {
+    if (activeBox.y < 0) return;
     switch (e.code) {
       case 'ArrowDown':
         if (hitBottomBorder(activeBox) || hitBottomBox(activeBox, map)) {

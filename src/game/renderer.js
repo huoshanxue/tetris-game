@@ -14,7 +14,7 @@ function _render(box, map) {
       const y = i + box.y;
       const x = j + box.x;
       if (checkLegalPoints({ offsetX: x, offsetY: y })) {
-        if (box.shape[i][j] > 0) {
+        if (box.shape[i][j] > 0 && map[y][x] === 0) {
           map[y][x] = box.shape[i][j]
         }
       }
